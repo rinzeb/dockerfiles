@@ -27,8 +27,8 @@ check_folder() {
         echo "Directory already contains files, starting tileserver now."
         exit 0
     else
-        echo "Empty directory, start downloading $URL."
-        wget -O ./mbtiles "$URL"
+        echo "Empty directory, start downloading $MBTILES_URL."
+        wget -O "$DIRECTORY""/auto-downloaded.mbtiles" "$MBTILES_URL" --no-check-certificate
         exit 0
     fi
 }
@@ -45,8 +45,8 @@ do
     shift 1
     ;;
     -u)
-    URL="$2"
-    if [ "$URL" = "" ]; then break; fi
+    MBTILES_URL="$2"
+    if [ "$MBTILES_URL" = "" ]; then break; fi
     shift 2
     ;;
     --)
